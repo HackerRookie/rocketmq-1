@@ -24,8 +24,19 @@ import java.util.Random;
 import org.apache.rocketmq.common.MixAll;
 
 public class BrokerData implements Comparable<BrokerData> {
+    /**
+     * 集群
+     */
     private String cluster;
+
+    /**
+     * broker 名称
+     */
     private String brokerName;
+
+    /**
+     * borker 地址
+     */
     private HashMap<Long/* brokerId */, String/* broker address */> brokerAddrs;
 
     private final Random random = new Random();
@@ -43,6 +54,8 @@ public class BrokerData implements Comparable<BrokerData> {
     /**
      * Selects a (preferably master) broker address from the registered list.
      * If the master's address cannot be found, a slave broker address is selected in a random manner.
+     * 先选择master broker 节点
+     * 如果没有master 节点则 随机找一个 slave 节点
      *
      * @return Broker address.
      */

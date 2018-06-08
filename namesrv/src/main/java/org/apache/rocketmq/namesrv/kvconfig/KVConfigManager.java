@@ -88,6 +88,9 @@ public class KVConfigManager {
         this.persist();
     }
 
+    /**
+     * 持续
+     */
     public void persist() {
         try {
             this.lock.readLock().lockInterruptibly();
